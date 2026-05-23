@@ -342,7 +342,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 <body>
 
 <!-- TOPBAR -->
-<header class="topbar">
+<header class="topbar transparent">
   <a href="#top" class="brand">
     <span class="brand-mark">ECO.</span>
     <span class="brand-sub">에코필라테스</span>
@@ -675,7 +675,7 @@ const topbarEl = document.querySelector('.topbar');
 const heroEl = document.getElementById('top');
 new IntersectionObserver(([e]) => {
   topbarEl.classList.toggle('transparent', e.isIntersecting);
-}, { threshold: 0.05 }).observe(heroEl);
+}, { threshold: 0.01 }).observe(heroEl);
 
 // Menu
 const menuBtn = document.getElementById('menuBtn');
