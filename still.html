@@ -195,6 +195,8 @@ section[id], div[id] { scroll-margin-top: 56px; }
 .class-body p { font-size: 13.5px; line-height: 1.72; color: var(--mute); word-break: keep-all; }
 .class-meta { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line2); display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .04em; color: var(--mute); }
 .class-meta b { color: var(--ink); font-weight: 700; }
+.class-equip { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.class-equip span { font-size: 11.5px; padding: 3px 9px; border-radius: 999px; background: rgba(107,114,100,.1); color: #4a5045; font-weight: 600; }
 
 /* ── INSTRUCTORS ─────────────────────────────── */
 .instructors-bg { background: #f7f6f3; }
@@ -421,11 +423,11 @@ section[id], div[id] { scroll-margin-top: 56px; }
     </div>
     <div class="phil-item reveal" data-d="80">
       <span class="phil-num">02</span>
-      <div><h3 class="phil-h">소수 정예 그룹</h3><p class="phil-p">최대 4인의 리포머 그룹으로 한 명 한 명 강사의 세밀한 큐잉을 받으며 운동합니다.</p></div>
+      <div><h3 class="phil-h">소수 정예 체형별 맞춤 운동</h3><p class="phil-p">최대 4인 소그룹으로, 한 명 한 명의 체형과 목표에 맞춘 개별 큐잉을 받으며 운동합니다.</p></div>
     </div>
     <div class="phil-item reveal" data-d="160">
       <span class="phil-num">03</span>
-      <div><h3 class="phil-h">검증된 전문 강사진</h3><p class="phil-p">대학 겸임교수 출신 원장을 포함한 국제 자격 보유 강사들이 안전하고 효과적인 수업을 진행합니다.</p></div>
+      <div><h3 class="phil-h">검증된 전문 강사진</h3><p class="phil-p">재활전문·스포츠의학·물리치료사 자격을 보유한 강사진이 의학적 근거 기반의 안전한 수업을 진행합니다.</p></div>
     </div>
   </div>
 </section>
@@ -486,11 +488,12 @@ section[id], div[id] { scroll-margin-top: 56px; }
       </div>
     </div>
     <div class="class-card reveal" data-d="100">
-      <div class="class-img"><img src="img_group.png" alt="매트"><span class="num">— 02</span></div>
+      <div class="class-img"><img src="img_group.png" alt="기구 필라테스"><span class="num">— 02</span></div>
       <div class="class-body">
-        <h3><span class="ital">Mat</span> 매트</h3>
-        <p>맨몸과 소도구만으로 진행하는 정통 필라테스. 호흡과 코어 컨트롤의 기본기를 단단히 다질 수 있습니다.</p>
-        <div class="class-meta"><span><b>50분</b> · 회당</span><span><b>최대 6인</b></span></div>
+        <h3><span class="ital">Apparatus</span> 기구 필라테스</h3>
+        <p>체어·배럴·캐딜락을 활용한 전문 기구 수업. 각 기구의 특성을 이용해 체형 교정과 근력 강화를 함께 다룹니다.</p>
+        <div class="class-meta"><span><b>50분</b> · 회당</span><span><b>최대 4인</b></span></div>
+        <div class="class-equip"><span>체어</span><span>배럴</span><span>캐딜락</span></div>
       </div>
     </div>
     <div class="class-card reveal" data-d="200">
@@ -505,11 +508,11 @@ section[id], div[id] { scroll-margin-top: 56px; }
 </section>
 
 <!-- SCHEDULE -->
-<section id="schedule" class="section">
+<section id="schedule" class="section" style="display:none">
   <div class="eyebrow reveal"><span class="dot"></span><span class="num">03 —</span><span>주간 시간표</span></div>
   <div class="section-head">
     <h2 class="h-section reveal" data-d="120">나에게 맞는<br><span class="ital">수업 시간</span>을.</h2>
-    <p class="lead reveal" data-d="240">평일 07:00부터 저녁 21:00까지, 생활 패턴에 맞는 시간대를 선택하세요.</p>
+    <p class="lead reveal" data-d="240">평일 09:00부터 저녁 22:00까지, 생활 패턴에 맞는 시간대를 선택하세요.</p>
   </div>
   <div class="schedule-wrap reveal" data-d="120">
     <div class="schedule-tabs">
@@ -520,7 +523,7 @@ section[id], div[id] { scroll-margin-top: 56px; }
   </div>
   <div class="schedule-legend reveal" data-d="220">
     <span class="leg"><span class="leg-dot" style="background:#8a9082"></span>리포머</span>
-    <span class="leg"><span class="leg-dot" style="background:#b5bba8"></span>매트</span>
+    <span class="leg"><span class="leg-dot" style="background:#b5bba8"></span>기구</span>
     <span class="leg"><span class="leg-dot" style="background:#aaa"></span>1:1 PT</span>
   </div>
   <a href="#contact" class="btn-outline reveal" data-d="260" style="display:block;text-align:center;margin-top:28px;padding:14px;border:1px solid var(--line2);border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;color:var(--ink);">원하는 시간대 상담 신청 →</a>
@@ -579,17 +582,17 @@ section[id], div[id] { scroll-margin-top: 56px; }
 <section id="location" class="section location-bg">
   <div class="eyebrow reveal"><span class="dot"></span><span class="num">06 —</span><span>오시는 길</span></div>
   <div class="section-head">
-    <h2 class="h-section reveal" data-d="120"><span class="ital">조용한</span> 골목,<br>밝은 2층.</h2>
+    <h2 class="h-section reveal" data-d="120"><span class="ital">조용한</span> 골목,<br>밝은 3층.</h2>
   </div>
   <div class="map-frame reveal-img">
     <div class="map-grid"></div>
     <div class="map-pin"></div>
   </div>
   <div class="loc-info reveal">
-    <p class="loc-note">전주 에코시티 내 위치. 쾌적한 주거 단지 안, 접근이 편리한 1층 상가에 자리하고 있습니다.</p>
+    <p class="loc-note">에코시티 단지 내 위치. 단지 주차장을 자유롭게 이용하실 수 있어 주차 걱정 없이 편하게 오실 수 있습니다.</p>
     <dl>
       <dt>Address</dt><dd><b>전북 전주시 덕진구 백석동로 11, 1동 301호</b></dd>
-      <dt>Hours</dt><dd>평일 07:00—21:00<br>토 09:00—17:00<br>일·공휴일 휴무</dd>
+      <dt>Hours</dt><dd>평일 09:00—22:00<br>토 09:00—12:00<br>일·공휴일 휴무</dd>
       <dt>Contact</dt><dd>인스타그램 DM<br>@sy._.pila_eco</dd>
       <dt>Parking</dt><dd>에코시티 단지 내 주차 가능</dd>
     </dl>
@@ -627,7 +630,7 @@ section[id], div[id] { scroll-margin-top: 56px; }
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews" class="section">
+<section id="reviews" class="section" style="display:none">
   <div class="eyebrow reveal"><span class="dot"></span><span class="num">—</span><span>회원 후기</span></div>
   <div class="section-head">
     <h2 class="h-section reveal" data-d="120">실제로<br><span class="ital">달라졌어요.</span></h2>
@@ -768,24 +771,21 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 // Schedule
 const schedData = {
   weekday: [
-    { time: '07:00', label: '리포머', type: 'reformer' },
-    { time: '08:00', label: '매트', type: 'mat' },
     { time: '09:00', label: '리포머', type: 'reformer' },
-    { time: '10:00', label: '1:1 PT', type: 'pt' },
-    { time: '11:00', label: '매트', type: 'mat' },
-    { time: '13:00', label: '리포머', type: 'reformer' },
-    { time: '16:00', label: '매트', type: 'mat' },
+    { time: '10:00', label: '기구', type: 'mat' },
+    { time: '11:00', label: '리포머', type: 'reformer' },
+    { time: '13:00', label: '1:1 PT', type: 'pt' },
+    { time: '15:00', label: '리포머', type: 'reformer' },
+    { time: '17:00', label: '기구', type: 'mat' },
     { time: '18:00', label: '리포머', type: 'reformer' },
     { time: '19:00', label: '1:1 PT', type: 'pt' },
     { time: '20:00', label: '리포머', type: 'reformer' },
+    { time: '21:00', label: '기구', type: 'mat' },
   ],
   saturday: [
     { time: '09:00', label: '리포머', type: 'reformer' },
-    { time: '10:00', label: '매트', type: 'mat' },
-    { time: '11:00', label: '리포머', type: 'reformer' },
-    { time: '12:00', label: '1:1 PT', type: 'pt' },
-    { time: '14:00', label: '매트', type: 'mat' },
-    { time: '15:00', label: '리포머', type: 'reformer' },
+    { time: '10:00', label: '기구', type: 'mat' },
+    { time: '11:00', label: '1:1 PT', type: 'pt' },
   ]
 };
 function renderSched(day) {
