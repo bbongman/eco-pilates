@@ -312,6 +312,42 @@ section[id], div[id] { scroll-margin-top: 56px; }
 .cta-call { background: transparent; color: var(--bg); border: 1px solid rgba(255,255,255,.2); }
 .cta-form { background: var(--bg); color: var(--ink); }
 
+/* ── SCHEDULE ────────────────────────────────── */
+.schedule-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.stab { flex: 1; padding: 10px; border: 1px solid var(--line2); border-radius: 8px; font-size: 14px; font-weight: 600; background: transparent; color: var(--mute); cursor: pointer; }
+.stab.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.schedule-grid { border: 1px solid var(--line2); border-radius: 12px; overflow: hidden; }
+.sched-row { display: grid; grid-template-columns: 58px 1fr; border-bottom: 1px solid var(--line2); }
+.sched-row:last-child { border-bottom: none; }
+.sched-time { padding: 13px 10px; font-size: 12px; color: var(--mute); background: #fafafa; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; border-right: 1px solid var(--line2); }
+.sched-cell { padding: 10px 14px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.sched-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; }
+.sched-tag.reformer { background: rgba(107,114,100,.12); color: #4a5045; }
+.sched-tag.mat { background: rgba(107,114,100,.22); color: #3a4035; }
+.sched-tag.pt { background: rgba(26,26,26,.07); color: var(--ink); }
+.sched-empty { color: var(--line2); font-size: 13px; }
+.schedule-legend { display: flex; gap: 16px; margin-top: 14px; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--mute); }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── REVIEWS ─────────────────────────────────── */
+.reviews-list { display: flex; flex-direction: column; gap: 14px; }
+.review-card { background: #f7f6f3; border-radius: 16px; padding: 22px 20px; }
+.review-stars { color: #c4a97b; font-size: 13px; letter-spacing: 3px; margin-bottom: 12px; }
+.review-body { font-size: 14.5px; line-height: 1.78; color: var(--ink); margin: 0 0 16px; word-break: keep-all; }
+.review-meta { display: flex; align-items: center; gap: 10px; }
+.review-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.review-tag { font-size: 12px; color: var(--mute); background: rgba(0,0,0,.06); padding: 3px 9px; border-radius: 999px; }
+
+/* ── EVENT BANNER ────────────────────────────── */
+.event-wrap { border-radius: 20px; overflow: hidden; position: relative; }
+.event-wrap img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+.event-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,.82) 0%, rgba(8,8,8,.28) 55%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 26px 22px; }
+.event-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; padding: 4px 11px; border-radius: 999px; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
+.event-title { font-size: clamp(20px, 6vw, 26px); font-weight: 700; color: #fff; margin: 0 0 7px; letter-spacing: -.03em; line-height: 1.2; }
+.event-desc { font-size: 13.5px; color: rgba(255,255,255,.78); margin: 0 0 18px; line-height: 1.65; word-break: keep-all; }
+.event-cta { display: inline-block; background: #fff; color: var(--ink); font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 999px; text-decoration: none; width: fit-content; }
+
 /* ── REVEAL ──────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0ms); }
 .reveal.in { opacity: 1; transform: none; }
@@ -468,6 +504,28 @@ section[id], div[id] { scroll-margin-top: 56px; }
   </div>
 </section>
 
+<!-- SCHEDULE -->
+<section id="schedule" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">03 —</span><span>주간 시간표</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">나에게 맞는<br><span class="ital">수업 시간</span>을.</h2>
+    <p class="lead reveal" data-d="240">평일 07:00부터 저녁 21:00까지, 생활 패턴에 맞는 시간대를 선택하세요.</p>
+  </div>
+  <div class="schedule-wrap reveal" data-d="120">
+    <div class="schedule-tabs">
+      <button class="stab on" data-day="weekday">평일</button>
+      <button class="stab" data-day="saturday">토요일</button>
+    </div>
+    <div class="schedule-grid" id="schedGrid"></div>
+  </div>
+  <div class="schedule-legend reveal" data-d="220">
+    <span class="leg"><span class="leg-dot" style="background:#8a9082"></span>리포머</span>
+    <span class="leg"><span class="leg-dot" style="background:#b5bba8"></span>매트</span>
+    <span class="leg"><span class="leg-dot" style="background:#aaa"></span>1:1 PT</span>
+  </div>
+  <a href="#contact" class="btn-outline reveal" data-d="260" style="display:block;text-align:center;margin-top:28px;padding:14px;border:1px solid var(--line2);border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;color:var(--ink);">원하는 시간대 상담 신청 →</a>
+</section>
+
 <!-- INSTRUCTORS -->
 <section id="instructors" class="section instructors-bg">
   <div class="eyebrow reveal"><span class="dot"></span><span class="num">03 —</span><span>강사 프로필</span></div>
@@ -564,6 +622,45 @@ section[id], div[id] { scroll-margin-top: 56px; }
     <div class="faq-item">
       <button class="faq-q"><span class="faq-n">05</span><span>임신 중에도 수업이 가능한가요?</span><span class="faq-icon"></span></button>
       <div class="faq-a"><span></span><p>안정기(16주 이후)부터 산전 필라테스 가능합니다. 산전 자격 강사가 진행합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">—</span><span>회원 후기</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">실제로<br><span class="ital">달라졌어요.</span></h2>
+  </div>
+  <div class="reviews-list">
+    <div class="review-card reveal" data-d="0">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"허리 디스크로 2년을 고생했는데 여기 오고 나서 확실히 통증이 줄었어요. 선생님이 운동 중에 계속 체크해주시는 게 정말 달랐어요."</p>
+      <div class="review-meta"><span class="review-name">박**</span><span class="review-tag">리포머 6개월</span></div>
+    </div>
+    <div class="review-card reveal" data-d="80">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"처음엔 걱정했는데 원장님이 정말 꼼꼼하게 봐주세요. 몸이 좋아지는 게 느껴지면서 운동이 즐거워졌습니다."</p>
+      <div class="review-meta"><span class="review-name">김**</span><span class="review-tag">1:1 PT 3개월</span></div>
+    </div>
+    <div class="review-card reveal" data-d="160">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"공간도 너무 예쁘고 강사님들도 다 친절하세요. 처음 등록할 때 체형 분석 해주시는 것도 신뢰가 갔어요."</p>
+      <div class="review-meta"><span class="review-name">이**</span><span class="review-tag">매트 4개월</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT BANNER -->
+<section id="event" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">—</span><span>이벤트</span></div>
+  <div class="event-wrap reveal-img">
+    <img src="img_event.png" alt="신규 등록 이벤트">
+    <div class="event-overlay">
+      <span class="event-badge">June Only</span>
+      <h3 class="event-title">신규 등록 이벤트</h3>
+      <p class="event-desc">6월 한 달, 첫 등록 회원에게<br>체형 분석 세션 무료 제공</p>
+      <a href="#contact" class="event-cta">지금 신청하기 →</a>
     </div>
   </div>
 </section>
@@ -667,6 +764,45 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     if (!wasOpen) item.classList.add('open');
   });
 });
+
+// Schedule
+const schedData = {
+  weekday: [
+    { time: '07:00', label: '리포머', type: 'reformer' },
+    { time: '08:00', label: '매트', type: 'mat' },
+    { time: '09:00', label: '리포머', type: 'reformer' },
+    { time: '10:00', label: '1:1 PT', type: 'pt' },
+    { time: '11:00', label: '매트', type: 'mat' },
+    { time: '13:00', label: '리포머', type: 'reformer' },
+    { time: '16:00', label: '매트', type: 'mat' },
+    { time: '18:00', label: '리포머', type: 'reformer' },
+    { time: '19:00', label: '1:1 PT', type: 'pt' },
+    { time: '20:00', label: '리포머', type: 'reformer' },
+  ],
+  saturday: [
+    { time: '09:00', label: '리포머', type: 'reformer' },
+    { time: '10:00', label: '매트', type: 'mat' },
+    { time: '11:00', label: '리포머', type: 'reformer' },
+    { time: '12:00', label: '1:1 PT', type: 'pt' },
+    { time: '14:00', label: '매트', type: 'mat' },
+    { time: '15:00', label: '리포머', type: 'reformer' },
+  ]
+};
+function renderSched(day) {
+  document.getElementById('schedGrid').innerHTML = schedData[day].map(r =>
+    `<div class="sched-row"><div class="sched-time">${r.time}</div><div class="sched-cell">${
+      r.label ? `<span class="sched-tag ${r.type}">${r.label}</span>` : '<span class="sched-empty">—</span>'
+    }</div></div>`
+  ).join('');
+}
+document.querySelectorAll('.stab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.stab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    renderSched(btn.dataset.day);
+  });
+});
+renderSched('weekday');
 
 // Chips
 document.querySelectorAll('.chips').forEach(group => {
