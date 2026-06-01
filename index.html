@@ -1,1 +1,832 @@
-<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=still.html"/></head></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>에코필라테스 — 에코시티1호점</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500;700&display=swap">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --bg: #ffffff;
+  --mute: #6b6b6b;
+  --soft: #b8b6b0;
+  --line: rgba(26,26,26,0.10);
+  --line2: rgba(26,26,26,0.05);
+  --accent: #6b7264;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  --serif: "Hahmlet", Georgia, serif;
+  --g: 22px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth; -webkit-font-smoothing: antialiased;
+  background: #ccc9c2;
+  min-height: 100vh;
+}
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-weight: 400;
+  font-size: 15.5px; line-height: 1.65;
+  letter-spacing: -0.012em;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 8px 48px rgba(0,0,0,.22);
+  position: relative;
+}
+img { display: block; width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+::selection { background: var(--ink); color: var(--bg); }
+
+/* ── TOPBAR ──────────────────────────────────── */
+.topbar {
+  position: fixed; top: 0; left: max(0px, calc(50vw - 215px)); right: max(0px, calc(50vw - 215px)); z-index: 100;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--g);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--line2);
+}
+.brand { display: flex; align-items: baseline; gap: 7px; flex-shrink: 0; }
+.brand-mark { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: -.01em; }
+.brand-sub { display: none; }
+.topbar-nav { display: flex; align-items: center; gap: 18px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.topbar-nav::-webkit-scrollbar { display: none; }
+.topbar-nav a { font-size: 12px; font-weight: 600; letter-spacing: .04em; white-space: nowrap; opacity: .75; transition: opacity .2s; }
+.topbar-nav a:last-child { padding: 7px 14px; background: var(--ink); color: var(--bg); border-radius: 999px; opacity: 1; font-size: 11.5px; }
+.topbar-nav a:hover { opacity: 1; }
+.topbar.transparent .topbar-nav a { color: #fff; }
+.topbar.transparent .topbar-nav a:last-child { background: rgba(255,255,255,.18); color: #fff; }
+
+/* ── BUTTONS ─────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 15px 24px; min-height: 50px;
+  background: var(--ink); color: var(--bg);
+  font-size: 14px; font-weight: 600; letter-spacing: .02em;
+  border-radius: 999px;
+  transition: opacity .2s;
+}
+.btn:active { opacity: .75; }
+.btn-block { display: flex; width: 100%; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-arrow { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+
+/* ── EYEBROW ─────────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--mute);
+}
+.eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.eyebrow .num { font-family: var(--serif); font-style: italic; font-size: 13px; letter-spacing: 0; color: var(--ink); font-weight: 400; }
+
+/* ── TYPE ────────────────────────────────────── */
+.h-display { font-weight: 700; font-size: clamp(44px, 13.5vw, 64px); line-height: .98; letter-spacing: -.045em; word-break: keep-all; }
+.h-display .ital { font-family: inherit; font-style: normal; font-weight: inherit; letter-spacing: inherit; }
+.h-section { font-weight: 700; font-size: clamp(28px, 9vw, 40px); line-height: 1.12; letter-spacing: -.035em; word-break: keep-all; }
+.h-section .ital { font-family: inherit; font-style: normal; font-weight: inherit; }
+.lead { font-size: 15.5px; line-height: 1.75; color: var(--ink); word-break: keep-all; }
+.body-text { font-size: 14px; line-height: 1.75; color: #555; word-break: keep-all; }
+
+/* ── SECTION ─────────────────────────────────── */
+.section { padding: 80px var(--g); scroll-margin-top: 56px; }
+section[id], div[id] { scroll-margin-top: 56px; }
+.section + .section { border-top: 1px solid var(--line2); }
+.section-head { margin-bottom: 36px; }
+.section-head .h-section { margin-top: 16px; }
+.section-head .lead { margin-top: 18px; }
+
+/* ── TOPBAR transparent on hero ──────────────── */
+.topbar { transition: background .4s var(--ease), border-color .4s var(--ease); }
+.topbar.transparent {
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+}
+.topbar.transparent .brand-mark { color: #fff; }
+.topbar.transparent .brand-sub { color: rgba(255,255,255,.5); }
+.topbar.transparent .menu-btn span { background: #fff; }
+
+/* ── HERO ────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  padding: 0;
+}
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,.82) 0%, rgba(8,8,8,.22) 52%, rgba(8,8,8,.08) 100%);
+}
+.hero-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 var(--g) 112px;
+}
+.hero-meta { display: flex; align-items: center; gap: 10px; font-size: 10.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px; }
+.hero-meta .bar { display: inline-block; width: 24px; height: 1px; background: rgba(255,255,255,.4); }
+.hero h1 { color: #fff; margin-bottom: 18px; word-break: keep-all; }
+.hero-sub { font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,.65); margin-bottom: 28px; word-break: keep-all; }
+.hero-cta { display: flex; flex-direction: column; gap: 12px; }
+.hero-cta .btn { background: #fff; color: var(--ink); }
+.hero-cta .btn-arrow { color: rgba(255,255,255,.7); border-bottom-color: rgba(255,255,255,.35); }
+.marquee-wrap { border-top: 1px solid var(--line2); border-bottom: 1px solid var(--line2); padding: 16px 0; overflow: hidden; margin-top: 0; }
+.marquee-inner { display: inline-flex; animation: marquee 32s linear infinite; white-space: nowrap; font-family: var(--serif); font-weight: 400; font-size: 19px; color: var(--soft); letter-spacing: -.01em; }
+.marquee-inner span { padding: 0 28px; }
+.marquee-inner span::after { content: "·"; margin-left: 28px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── ABOUT ───────────────────────────────────── */
+.about-img { position: relative; aspect-ratio: 16/10; overflow: hidden; background: #eee; margin-bottom: 28px; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-caption { position: absolute; bottom: 14px; left: 14px; background: var(--bg); padding: 10px 14px; }
+.about-caption .num { display: block; font-family: var(--serif); font-weight: 700; font-size: 20px; line-height: 1; margin-bottom: 2px; }
+.about-caption .lbl { font-size: 10px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--mute); }
+.philosophy { border-top: 1px solid var(--line); margin-top: 36px; }
+.phil-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.phil-num { font-family: var(--serif); font-weight: 700; font-size: 20px; line-height: 1; padding-top: 2px; }
+.phil-h { font-size: 16px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 5px; }
+.phil-p { font-size: 13.5px; line-height: 1.7; color: var(--mute); word-break: keep-all; }
+
+/* ── NARRATIVE (에디토리얼 이미지+텍스트) ─────── */
+.narr-item { border-top: 1px solid var(--line2); }
+.narr-img { aspect-ratio: 4/3; overflow: hidden; background: #eee; position: relative; }
+.narr-img img { width: 100%; height: 100%; object-fit: cover; }
+.narr-img .img-label { position: absolute; bottom: 12px; left: 14px; background: var(--bg); padding: 6px 11px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
+.narr-body { padding: 28px var(--g) 36px; }
+.narr-seq { font-family: var(--serif); font-style: italic; font-size: 52px; font-weight: 300; line-height: 1; color: rgba(26,26,26,.07); display: block; margin-bottom: 18px; }
+.narr-body h3 { font-weight: 700; font-size: 26px; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 16px; word-break: keep-all; }
+.narr-body h3 .ital { font-family: inherit; font-style: normal; font-weight: inherit; }
+.narr-body p { font-size: 14px; line-height: 1.78; color: var(--mute); word-break: keep-all; }
+.narr-tag { display: inline-flex; margin-top: 20px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+
+/* ── VIDEO ───────────────────────────────────── */
+.video-section { position: relative; }
+.video-wrap { position: relative; aspect-ratio: 9/16; background: var(--ink); overflow: hidden; }
+.video-wrap video { width: 100%; height: 100%; object-fit: cover; opacity: .65; }
+.video-placeholder { width: 100%; height: 100%; background: linear-gradient(160deg, #2e2e2e 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center; }
+.play-ring { width: 68px; height: 68px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; }
+.play-ring::after { content:''; width:0; height:0; border-left:20px solid rgba(255,255,255,.6); border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:4px; }
+.video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px var(--g); background: linear-gradient(to top, rgba(26,26,26,.65) 0%, transparent 55%); pointer-events: none; }
+.video-overlay .v-tag { font-size: 10px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 10px; }
+.video-overlay h2 { font-family: var(--sans); font-style: normal; font-weight: 700; font-size: clamp(28px, 8.5vw, 40px); line-height: 1.1; color: #fff; word-break: keep-all; letter-spacing: -.03em; }
+
+/* ── CLASSES ─────────────────────────────────── */
+.classes-list { display: flex; flex-direction: column; gap: 2px; margin-top: 32px; }
+.class-card { background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
+.class-img { aspect-ratio: 5/3; overflow: hidden; background: #eee; position: relative; }
+.class-img img { width: 100%; height: 100%; object-fit: cover; }
+.class-img .num { position: absolute; top: 12px; left: 12px; background: var(--bg); padding: 5px 9px; font-family: var(--serif); font-size: 13px; font-weight: 700; }
+.class-body { padding: 20px 20px 24px; }
+.class-body h3 { font-size: 23px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 8px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.class-body h3 .ital { font-family: inherit; font-style: normal; font-weight: 300; font-size: inherit; color: var(--mute); }
+.class-body p { font-size: 13.5px; line-height: 1.72; color: var(--mute); word-break: keep-all; }
+.class-meta { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line2); display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .04em; color: var(--mute); }
+.class-meta b { color: var(--ink); font-weight: 700; }
+.class-equip { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.class-equip span { font-size: 11.5px; padding: 3px 9px; border-radius: 999px; background: rgba(107,114,100,.1); color: #4a5045; font-weight: 600; }
+
+/* ── INSTRUCTORS ─────────────────────────────── */
+.instructors-bg { background: #f7f6f3; }
+.instr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; margin-top: 32px; }
+.instr-card { display: flex; flex-direction: column; }
+.instr-img { aspect-ratio: 3/4; overflow: hidden; background: #eee; margin-bottom: 12px; }
+.instr-img img { width: 100%; height: 100%; object-fit: cover; }
+.instr-num { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--mute); margin-bottom: 4px; }
+.instr-name { font-size: 17px; font-weight: 700; letter-spacing: -.025em; margin-bottom: 2px; }
+.instr-role { font-size: 12px; color: var(--mute); line-height: 1.5; margin-bottom: 8px; }
+.instr-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.instr-tag { font-size: 10.5px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--mute); }
+
+/* ── GALLERY ─────────────────────────────────── */
+.gallery-grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 50px; gap: 6px; margin-top: 32px; }
+.g-item { overflow: hidden; background: #eee; position: relative; }
+.g-item img { width: 100%; height: 100%; object-fit: cover; }
+.g-item .g-lbl { position: absolute; bottom: 8px; left: 10px; font-size: 9.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.75); text-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.g1 { grid-column: span 6; grid-row: span 4; }
+.g2 { grid-column: span 3; grid-row: span 3; }
+.g3 { grid-column: span 3; grid-row: span 3; }
+.g4 { grid-column: span 4; grid-row: span 2; }
+.g5 { grid-column: span 2; grid-row: span 2; }
+.g6 { grid-column: span 6; grid-row: span 3; }
+
+/* ── PRICING ─────────────────────────────────── */
+.pricing-list { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.price-card { padding: 26px 22px 28px; border: 1px solid var(--line); position: relative; }
+.price-card.featured { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.price-flag { position: absolute; top: 18px; right: 20px; background: rgba(255,255,255,.14); color: var(--bg); font-family: var(--serif); font-style: italic; font-size: 13px; padding: 4px 11px; border-radius: 999px; }
+.price-num { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--mute); display: block; margin-bottom: 12px; }
+.price-card.featured .price-num { color: rgba(255,255,255,.45); }
+.price-name { font-size: 23px; font-weight: 700; letter-spacing: -.03em; }
+.price-ko { display: block; font-size: 12px; font-weight: 500; color: var(--mute); margin-top: 4px; margin-bottom: 18px; font-family: var(--serif); }
+.price-card.featured .price-ko { color: rgba(255,255,255,.45); }
+.price-amount { font-size: 42px; font-weight: 200; letter-spacing: -.03em; line-height: 1; }
+.price-amount sup { font-size: 15px; font-weight: 400; vertical-align: 15px; margin-right: 1px; }
+.price-per { font-size: 12.5px; color: var(--mute); margin-top: 6px; margin-bottom: 20px; display: block; }
+.price-card.featured .price-per { color: rgba(255,255,255,.45); }
+.price-features { list-style: none; border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+.price-card.featured .price-features { border-color: rgba(255,255,255,.15); }
+.price-feature { font-size: 13px; color: var(--mute); display: flex; align-items: baseline; gap: 10px; line-height: 1.5; word-break: keep-all; }
+.price-feature::before { content:""; flex: 0 0 8px; height: 1px; background: var(--ink); transform: translateY(-4px); }
+.price-card.featured .price-feature { color: rgba(255,255,255,.6); }
+.price-card.featured .price-feature::before { background: rgba(255,255,255,.4); }
+.price-card.featured .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+.pricing-note { margin-top: 20px; font-size: 12px; line-height: 1.75; color: var(--mute); }
+
+/* ── LOCATION ────────────────────────────────── */
+.location-bg { background: #f7f6f3; }
+.map-frame { aspect-ratio: 4/3; background: #e4e2dc; border: 1px solid var(--line); border-radius: 16px; position: relative; overflow: hidden; margin-bottom: 24px; }
+.map-frame img { width: 100%; height: 100%; object-fit: cover; }
+.map-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(26,26,26,.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,26,26,.05) 1px, transparent 1px); background-size: 28px 28px; }
+.map-pin { position: absolute; left: 54%; top: 48%; width: 13px; height: 13px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 5px rgba(26,26,26,.1), 0 0 0 12px rgba(26,26,26,.05); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 5px rgba(26,26,26,.10),0 0 0 12px rgba(26,26,26,.04);}50%{box-shadow:0 0 0 9px rgba(26,26,26,.06),0 0 0 18px rgba(26,26,26,.02);} }
+.loc-info dl { display: grid; grid-template-columns: 68px 1fr; row-gap: 16px; column-gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+.loc-info dt { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); font-weight: 600; padding-top: 3px; }
+.loc-info dd { font-size: 14px; line-height: 1.7; }
+.loc-info dd b { font-weight: 600; }
+.loc-note { font-size: 14px; line-height: 1.75; color: var(--mute); margin-bottom: 20px; word-break: keep-all; }
+
+/* ── FAQ ─────────────────────────────────────── */
+.faq-list { border-top: 1px solid var(--line); margin-top: 32px; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q { display: grid; grid-template-columns: 32px 1fr 22px; gap: 10px; align-items: center; padding: 20px 0; width: 100%; background: none; text-align: left; font-size: 15.5px; font-weight: 600; letter-spacing: -.02em; word-break: keep-all; }
+.faq-n { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--mute); }
+.faq-icon { width: 14px; height: 14px; position: relative; justify-self: end; }
+.faq-icon::before, .faq-icon::after { content:""; position: absolute; inset: 50% 0 auto 0; height: 1.4px; background: var(--ink); transition: transform .35s var(--ease); }
+.faq-icon::after { transform: rotate(90deg); }
+.faq-item.open .faq-icon::after { transform: rotate(0deg); }
+.faq-a { display: grid; grid-template-columns: 32px 1fr 22px; gap: 10px; max-height: 0; overflow: hidden; transition: max-height .45s var(--ease), padding .35s var(--ease); }
+.faq-item.open .faq-a { max-height: 500px; padding-bottom: 20px; }
+.faq-a p { grid-column: 2/3; font-size: 13.5px; line-height: 1.75; color: var(--mute); word-break: keep-all; }
+
+/* ── CONTACT ─────────────────────────────────── */
+.contact-bg { background: var(--ink); color: var(--bg); }
+.contact-bg .eyebrow { color: rgba(255,255,255,.5); }
+.contact-bg .eyebrow .dot { background: rgba(255,255,255,.35); }
+.contact-bg .eyebrow .num { color: rgba(255,255,255,.65); }
+.contact-bg .h-section { color: var(--bg); }
+.contact-bg .body-text { color: rgba(255,255,255,.6); }
+.kakao-card { margin-top: 24px; padding: 20px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; }
+.kakao-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.kakao-card p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+.kakao-btn { display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 14px 20px; background: #FEE500; color: #181600; font-size: 14px; font-weight: 700; border-radius: 999px; min-height: 48px; }
+.form { margin-top: 24px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 24px 20px; display: grid; gap: 18px; }
+.form-row { display: flex; flex-direction: column; gap: 8px; }
+.form label { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,.5); }
+.form label .req { color: #fff; }
+.form input, .form textarea { background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 10px 0; color: var(--bg); font-size: 15px; outline: none; transition: border-color .2s; }
+.form input:focus, .form textarea:focus { border-color: var(--bg); }
+.form input::placeholder, .form textarea::placeholder { color: rgba(255,255,255,.28); }
+.form textarea { resize: none; min-height: 80px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12.5px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.7); border-radius: 999px; font-weight: 500; background: transparent; transition: all .2s; }
+.chip.on { background: var(--bg); color: var(--ink); border-color: var(--bg); }
+.form-submit { padding: 16px; background: var(--bg); color: var(--ink); border-radius: 999px; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; width: 100%; transition: opacity .2s; }
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer { background: #111; color: rgba(255,255,255,.45); padding: 32px var(--g) 40px; font-size: 12.5px; line-height: 1.75; }
+.footer-brand { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--bg); margin-bottom: 8px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 16px; }
+.footer-links a { color: rgba(255,255,255,.4); }
+
+/* ── STICKY BOTTOM CTA ───────────────────────── */
+.sticky-cta {
+  position: fixed;
+  left: max(12px, calc(50vw - 203px));
+  right: max(12px, calc(50vw - 203px));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 200;
+}
+.sticky-inner { display: flex; gap: 8px; padding: 10px; background: rgba(26,26,26,.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.22); }
+.cta-call, .cta-form { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 13px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600; min-height: 44px; }
+.cta-call { background: transparent; color: var(--bg); border: 1px solid rgba(255,255,255,.2); }
+.cta-form { background: var(--bg); color: var(--ink); }
+
+/* ── SCHEDULE ────────────────────────────────── */
+.schedule-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.stab { flex: 1; padding: 10px; border: 1px solid var(--line2); border-radius: 8px; font-size: 14px; font-weight: 600; background: transparent; color: var(--mute); cursor: pointer; }
+.stab.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.schedule-grid { border: 1px solid var(--line2); border-radius: 12px; overflow: hidden; }
+.sched-row { display: grid; grid-template-columns: 58px 1fr; border-bottom: 1px solid var(--line2); }
+.sched-row:last-child { border-bottom: none; }
+.sched-time { padding: 13px 10px; font-size: 12px; color: var(--mute); background: #fafafa; display: flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; border-right: 1px solid var(--line2); }
+.sched-cell { padding: 10px 14px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.sched-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; }
+.sched-tag.reformer { background: rgba(107,114,100,.12); color: #4a5045; }
+.sched-tag.mat { background: rgba(107,114,100,.22); color: #3a4035; }
+.sched-tag.pt { background: rgba(26,26,26,.07); color: var(--ink); }
+.sched-empty { color: var(--line2); font-size: 13px; }
+.schedule-legend { display: flex; gap: 16px; margin-top: 14px; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--mute); }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── REVIEWS ─────────────────────────────────── */
+.reviews-list { display: flex; flex-direction: column; gap: 14px; }
+.review-card { background: #f7f6f3; border-radius: 16px; padding: 22px 20px; }
+.review-stars { color: #c4a97b; font-size: 13px; letter-spacing: 3px; margin-bottom: 12px; }
+.review-body { font-size: 14.5px; line-height: 1.78; color: var(--ink); margin: 0 0 16px; word-break: keep-all; }
+.review-meta { display: flex; align-items: center; gap: 10px; }
+.review-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.review-tag { font-size: 12px; color: var(--mute); background: rgba(0,0,0,.06); padding: 3px 9px; border-radius: 999px; }
+
+/* ── EVENT BANNER ────────────────────────────── */
+.event-wrap { border-radius: 20px; overflow: hidden; position: relative; }
+.event-wrap img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+.event-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,.92) 0%, rgba(8,8,8,.75) 50%, rgba(8,8,8,.45) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 26px 22px; }
+.event-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; padding: 4px 11px; border-radius: 999px; text-transform: uppercase; margin-bottom: 10px; width: fit-content; }
+.event-title { font-size: clamp(20px, 6vw, 26px); font-weight: 700; color: #fff; margin: 0 0 7px; letter-spacing: -.03em; line-height: 1.2; }
+.event-desc { font-size: 13.5px; color: rgba(255,255,255,.78); margin: 0 0 18px; line-height: 1.65; word-break: keep-all; }
+.event-cta { display: inline-block; background: #fff; color: var(--ink); font-size: 13px; font-weight: 700; padding: 10px 20px; border-radius: 999px; text-decoration: none; width: fit-content; }
+
+/* ── REVEAL ──────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0ms); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-img { clip-path: inset(0 0 100% 0); transition: clip-path 1s var(--ease); transition-delay: var(--d, 0ms); }
+.reveal-img.in { clip-path: inset(0 0 0% 0); }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal-img { transition: none !important; opacity: 1; transform: none; clip-path: none; } .marquee-inner, .map-pin { animation: none; } }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar transparent">
+  <a href="#top" class="brand">
+    <span class="brand-mark">ECO.</span>
+    <span class="brand-sub">에코필라테스</span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="#about">소개</a>
+    <a href="#classes">수업</a>
+    <a href="#instructors">강사</a>
+    <a href="#location">오시는 길</a>
+    <a href="#contact">상담 신청</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-bg">
+    <img src="img_hero.png" alt="STILL. 필라테스 스튜디오">
+    <div class="hero-gradient"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <span class="bar"></span>
+      <span>Seoul · Since 2024</span>
+    </div>
+    <h1 class="h-display">당신의 몸을<br>다시 읽다</h1>
+    <p class="hero-sub">스포츠의학 기반의 정직한 필라테스. 에코필라테스는 움직임의 원리에서 시작해 당신만의 건강한 루틴을 만들어 갑니다.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-block">무료 상담 받기 →</a>
+      <a href="#classes" class="btn-arrow">수업 둘러보기 →</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>breath</span><span>balance</span><span>alignment</span><span>core</span><span>posture</span><span>flow</span>
+    <span>breath</span><span>balance</span><span>alignment</span><span>core</span><span>posture</span><span>flow</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">01 —</span><span>소개</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">과학으로 설계한<br>단단한 움직임</h2>
+    <p class="lead reveal" data-d="240">에코필라테스는 스포츠의학 기반의 체계적인 분석으로 시작합니다. 내 몸의 불균형을 정확히 파악하고, 가장 안전한 방법으로 변화를 만들어가는 곳.</p>
+  </div>
+  <div class="about-img reveal-img">
+    <img src="img_studio.png" alt="스튜디오 내부">
+    <div class="about-caption">
+      <span class="num">02</span>
+      <span class="lbl">About · 소개</span>
+    </div>
+  </div>
+  <div class="philosophy">
+    <div class="phil-item reveal" data-d="0">
+      <span class="phil-num">01</span>
+      <div><h3 class="phil-h">스포츠의학 기반 분석</h3><p class="phil-p">고려대 스포츠의학 석사 원장이 직접 체형·움직임을 분석해 개인 맞춤 운동 계획을 수립합니다.</p></div>
+    </div>
+    <div class="phil-item reveal" data-d="80">
+      <span class="phil-num">02</span>
+      <div><h3 class="phil-h">소수 정예 체형별 맞춤 운동</h3><p class="phil-p">최대 4인 소그룹으로, 한 명 한 명의 체형과 목표에 맞춘 개별 큐잉을 받으며 운동합니다.</p></div>
+    </div>
+    <div class="phil-item reveal" data-d="160">
+      <span class="phil-num">03</span>
+      <div><h3 class="phil-h">검증된 전문 강사진</h3><p class="phil-p">재활전문·스포츠의학·물리치료사 자격을 보유한 강사진이 의학적 근거 기반의 안전한 수업을 진행합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVE 1 -->
+<div class="narr-item">
+  <div class="narr-img reveal-img">
+    <img src="img_group.png" alt="그룹 수업">
+    <span class="img-label">Group Class</span>
+  </div>
+  <div class="narr-body">
+    <span class="narr-seq">01</span>
+    <h3>함께여서<br><span class="ital">더 단단해지는</span><br>리포머 그룹</h3>
+    <p>최대 4인의 소규모 그룹. 기구의 스프링 저항이 근육 길이와 정렬을 동시에 다루며, 매 수업마다 강사의 세밀한 큐잉이 함께합니다.</p>
+    <span class="narr-tag">Reformer — 최대 4인 · 50분</span>
+  </div>
+</div>
+
+<!-- NARRATIVE 2 -->
+<div class="narr-item">
+  <div class="narr-img reveal-img">
+    <img src="img_pt.png" alt="1:1 트레이닝">
+    <span class="img-label">Private Session</span>
+  </div>
+  <div class="narr-body">
+    <span class="narr-seq">02</span>
+    <h3>당신만을 위한<br><span class="ital">완전한</span><br>1:1 케어</h3>
+    <p>체형 진단과 목표에 맞춰 완전 개인화된 세션. 통증 관리, 재활, 자세 교정까지 가장 빠르고 안전하게 변화를 만듭니다.</p>
+    <span class="narr-tag">Private PT — 1:1 · 50분</span>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-wrap">
+    <div class="video-placeholder"><div class="play-ring"></div></div>
+    <div class="video-overlay">
+      <span class="v-tag">Studio Film · 2024</span>
+      <h2>움직임이<br>머무는 공간</h2>
+    </div>
+  </div>
+</div>
+
+<!-- CLASSES -->
+<section id="classes" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">02 —</span><span>수업 소개</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">세 가지 결,<br><span class="ital">하나의</span> 중심.</h2>
+    <p class="lead reveal" data-d="240">STILL.의 모든 수업은 동일한 원칙 위에 있습니다 — 호흡, 정렬, 그리고 코어.</p>
+  </div>
+  <div class="classes-list">
+    <div class="class-card reveal" data-d="0">
+      <div class="class-img"><img src="img_studio.png" alt="리포머"><span class="num">— 01</span></div>
+      <div class="class-body">
+        <h3><span class="ital">Reformer</span> 리포머</h3>
+        <p>스프링의 저항을 이용해 근육의 길이와 정렬을 동시에 다룹니다. 코어 강화와 자세 교정에 가장 효과적인 시그니처 클래스.</p>
+        <div class="class-meta"><span><b>50분</b> · 회당</span><span><b>최대 4인</b></span></div>
+      </div>
+    </div>
+    <div class="class-card reveal" data-d="100">
+      <div class="class-img"><img src="img_group.png" alt="기구 필라테스"><span class="num">— 02</span></div>
+      <div class="class-body">
+        <h3><span class="ital">Apparatus</span> 기구 필라테스</h3>
+        <p>체어·배럴·캐딜락을 활용한 전문 기구 수업. 각 기구의 특성을 이용해 체형 교정과 근력 강화를 함께 다룹니다.</p>
+        <div class="class-meta"><span><b>50분</b> · 회당</span><span><b>최대 4인</b></span></div>
+        <div class="class-equip"><span>체어</span><span>배럴</span><span>캐딜락</span></div>
+      </div>
+    </div>
+    <div class="class-card reveal" data-d="200">
+      <div class="class-img"><img src="img_pt.png" alt="1:1 PT"><span class="num">— 03</span></div>
+      <div class="class-body">
+        <h3><span class="ital">Private</span> 1:1 PT</h3>
+        <p>체형 진단과 목표에 맞춰 완전 개인화된 세션. 통증 관리·재활·자세 교정까지 가장 빠르게.</p>
+        <div class="class-meta"><span><b>50분</b> · 회당</span><span><b>1:1</b></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="section" style="display:none">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">03 —</span><span>주간 시간표</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">나에게 맞는<br><span class="ital">수업 시간</span>을.</h2>
+    <p class="lead reveal" data-d="240">평일 09:00부터 저녁 22:00까지, 생활 패턴에 맞는 시간대를 선택하세요.</p>
+  </div>
+  <div class="schedule-wrap reveal" data-d="120">
+    <div class="schedule-tabs">
+      <button class="stab on" data-day="weekday">평일</button>
+      <button class="stab" data-day="saturday">토요일</button>
+    </div>
+    <div class="schedule-grid" id="schedGrid"></div>
+  </div>
+  <div class="schedule-legend reveal" data-d="220">
+    <span class="leg"><span class="leg-dot" style="background:#8a9082"></span>리포머</span>
+    <span class="leg"><span class="leg-dot" style="background:#b5bba8"></span>기구</span>
+    <span class="leg"><span class="leg-dot" style="background:#aaa"></span>1:1 PT</span>
+  </div>
+  <a href="#contact" class="btn-outline reveal" data-d="260" style="display:block;text-align:center;margin-top:28px;padding:14px;border:1px solid var(--line2);border-radius:12px;font-weight:600;font-size:14px;text-decoration:none;color:var(--ink);">원하는 시간대 상담 신청 →</a>
+</section>
+
+<!-- INSTRUCTORS -->
+<section id="instructors" class="section instructors-bg">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">03 —</span><span>강사 프로필</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">물리치료사 출신<br>전문 강사진</h2>
+    <p class="lead reveal" data-d="240">물리치료사 면허를 보유한 강사진이 체형 분석부터 재활까지, 의학적 근거 기반의 안전한 수업을 진행합니다.</p>
+  </div>
+  <div class="instr-grid">
+    <div class="instr-card reveal" data-d="0">
+      <div class="instr-img"><img src="img_instr1.png" alt="김소연"></div>
+      <span class="instr-num">— 01</span>
+      <h3 class="instr-name">김소연</h3>
+      <p class="instr-role">원장 · Head Instructor</p>
+      <div class="instr-tags"><span class="instr-tag">물리치료사</span><span class="instr-tag">스포츠의학 석사</span><span class="instr-tag">전 대학 겸임교수</span></div>
+    </div>
+    <div class="instr-card reveal" data-d="80">
+      <div class="instr-img"><img src="img_instr2.png" alt="지아"></div>
+      <span class="instr-num">— 02</span>
+      <h3 class="instr-name">지아</h3>
+      <p class="instr-role">Reformer Instructor</p>
+      <div class="instr-tags"><span class="instr-tag">물리치료사</span><span class="instr-tag">리포머</span><span class="instr-tag">체형교정</span></div>
+    </div>
+    <div class="instr-card reveal" data-d="160">
+      <div class="instr-img"><img src="img_instr3.png" alt="영"></div>
+      <span class="instr-num">— 03</span>
+      <h3 class="instr-name">영</h3>
+      <p class="instr-role">Rehabilitation Instructor</p>
+      <div class="instr-tags"><span class="instr-tag">물리치료사</span><span class="instr-tag">재활</span><span class="instr-tag">체형교정</span></div>
+    </div>
+    <div class="instr-card reveal" data-d="240">
+      <span class="instr-num">— 04</span>
+      <h3 class="instr-name">유리</h3>
+      <p class="instr-role">Apparatus Instructor</p>
+      <div class="instr-tags"><span class="instr-tag">물리치료사</span><span class="instr-tag">기구필라테스</span><span class="instr-tag">소그룹</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">04 —</span><span>시설</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">머무르고 싶은<br><span class="ital">한 평의</span> 공간.</h2>
+    <p class="lead reveal" data-d="240">자연광이 가득한 리포머 룸과 기구 스튜디오.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item g1 reveal-img"><img src="img_gallery1.jpg?v=3" alt="리포머 룸"><span class="g-lbl">Reformer Room</span></div>
+    <div class="g-item g2 reveal-img"><img src="img_gallery2.jpg?v=3" alt="스튜디오"><span class="g-lbl">Studio</span></div>
+    <div class="g-item g3 reveal-img"><img src="img_gallery3.jpg?v=3" alt="기구"><span class="g-lbl">Equipment</span></div>
+    <div class="g-item g4 reveal-img"><img src="img_gallery4.jpg?v=3" alt="공간"><span class="g-lbl">Space</span></div>
+    <div class="g-item g5 reveal-img"><img src="img_gallery5.jpg?v=3" alt="자연광"><span class="g-lbl">Light</span></div>
+    <div class="g-item g6 reveal-img"><img src="img_gallery1.jpg?v=3" alt="리포머"><span class="g-lbl">Reformer</span></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="section location-bg">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">06 —</span><span>오시는 길</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120"><span class="ital">조용한</span> 골목,<br>밝은 3층.</h2>
+  </div>
+  <div class="map-frame reveal-img">
+    <iframe src="https://maps.google.com/maps?q=전북+전주시+덕진구+백석동로+11&z=17&hl=ko&output=embed" width="100%" height="100%" frameborder="0" style="border:0;width:100%;height:100%;display:block;" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="loc-info reveal">
+    <p class="loc-note">에코시티 단지 내 3층. 건물 주차 가능합니다.</p>
+    <dl>
+      <dt>Address</dt><dd><b>전북 전주시 덕진구 백석동로 11 에코필라테스 3층</b></dd>
+      <dt>Hours</dt><dd>평일 09:00—22:00<br>토 09:00—12:00<br>일·공휴일 휴무</dd>
+      <dt>Contact</dt><dd>인스타그램 DM<br>@sy._.pila_eco</dd>
+      <dt>Parking</dt><dd>건물 주차 가능</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">07 —</span><span>자주 묻는 질문</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">궁금한 것이<br><span class="ital">있으신가요?</span></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-n">01</span><span>필라테스가 처음인데도 괜찮을까요?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><span></span><p>필라테스가 처음이셔도 괜찮아요! 오히려 처음이라 더 잘 오셨다고 말씀드리고 싶어요 🤍<br><br>저희는 재활·체형교정 소그룹 전문센터로, 운동이 처음이신 분·통증이나 체형 고민이 있는 분들도 부담 없이 시작하실 수 있게 도와드려요 😊<br><br>처음 오시면 몸 상태를 먼저 체크한 후 무리하지 않는 강도부터 천천히 진행해드리니 편하게 상담 받아보세요 🙌🤍</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-n">02</span><span>운동복은 별도로 준비해야 하나요?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><span></span><p>편안한 활동복과 양말이면 충분합니다. 라커룸·어메니티가 모두 준비되어 있습니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-n">03</span><span>환불 규정이 궁금합니다.</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><span></span><p>✔️ 수업 시작 전 : 소비자보호법 기준에 따라 위약금 10% 제외 후 환불 가능합니다.<br>✔️ 수업 시작 후 : 진행된 수업을 제외한 잔여 횟수 차감 후 환불로 진행됩니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-n">04</span><span>수업 변경·취소는 언제까지 가능한가요?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><span></span><p>✔️ 수업 변경 : 당일 변경 가능합니다.<br>✔️ 수업 취소 : 최소 하루 전까지만 가능하며, 당일 취소는 불가합니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q"><span class="faq-n">05</span><span>임신 중에도 수업이 가능한가요?</span><span class="faq-icon"></span></button>
+      <div class="faq-a"><span></span><p>안정기(16주 이후)부터 산전 필라테스 가능합니다. 산전 자격 강사가 진행합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section" style="display:none">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">—</span><span>회원 후기</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">실제로<br><span class="ital">달라졌어요.</span></h2>
+  </div>
+  <div class="reviews-list">
+    <div class="review-card reveal" data-d="0">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"허리 디스크로 2년을 고생했는데 여기 오고 나서 확실히 통증이 줄었어요. 선생님이 운동 중에 계속 체크해주시는 게 정말 달랐어요."</p>
+      <div class="review-meta"><span class="review-name">박**</span><span class="review-tag">리포머 6개월</span></div>
+    </div>
+    <div class="review-card reveal" data-d="80">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"처음엔 걱정했는데 원장님이 정말 꼼꼼하게 봐주세요. 몸이 좋아지는 게 느껴지면서 운동이 즐거워졌습니다."</p>
+      <div class="review-meta"><span class="review-name">김**</span><span class="review-tag">1:1 PT 3개월</span></div>
+    </div>
+    <div class="review-card reveal" data-d="160">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-body">"공간도 너무 예쁘고 강사님들도 다 친절하세요. 처음 등록할 때 체형 분석 해주시는 것도 신뢰가 갔어요."</p>
+      <div class="review-meta"><span class="review-name">이**</span><span class="review-tag">매트 4개월</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT BANNER -->
+<section id="event" class="section">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">—</span><span>이벤트</span></div>
+  <div class="event-wrap reveal-img">
+    <img src="img_event.png" alt="신규 등록 이벤트">
+    <div class="event-overlay">
+      <span class="event-badge">June Only</span>
+      <h3 class="event-title">신규 등록 이벤트</h3>
+      <p class="event-desc">6월 한 달, 첫 등록 회원에게<br>체형 분석 세션 무료 제공</p>
+      <a href="#contact" class="event-cta">지금 신청하기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-bg">
+  <div class="eyebrow reveal"><span class="dot"></span><span class="num">08 —</span><span>상담 신청</span></div>
+  <div class="section-head">
+    <h2 class="h-section reveal" data-d="120">먼저 한 번,<br><span class="ital">편하게</span> 이야기.</h2>
+    <p class="body-text reveal" data-d="240">상담은 모두 무료입니다. 영업일 기준 <strong style="color:#fff;">24시간 이내</strong>에 연락드립니다.</p>
+  </div>
+  <div class="kakao-card reveal">
+    <h4>카카오톡으로 바로 문의</h4>
+    <p>채널 추가 후 메시지를 남겨주세요. 평균 5분 내 답변.</p>
+    <button class="kakao-btn" onclick="window.open('https://www.instagram.com/sy._.pila_eco/','_blank')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.8 6.8L5.6 22l5-3.3c.5 0 .9.1 1.4.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+      인스타그램 DM으로 바로 문의 →
+    </button>
+  </div>
+  <form class="form reveal" data-d="180" id="contactForm">
+    <div class="form-row">
+      <label>이름 <span class="req">*</span></label>
+      <input required placeholder="홍길동" type="text">
+    </div>
+    <div class="form-row">
+      <label>연락처 <span class="req">*</span></label>
+      <input required placeholder="010-0000-0000" type="tel">
+    </div>
+    <div class="form-row">
+      <label>관심 수업</label>
+      <div class="chips">
+        <button type="button" class="chip on">리포머 그룹</button>
+        <button type="button" class="chip">매트 그룹</button>
+        <button type="button" class="chip">1:1 PT</button>
+        <button type="button" class="chip">모르겠어요</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <label>선호 시간대</label>
+      <div class="chips">
+        <button type="button" class="chip">평일 오전</button>
+        <button type="button" class="chip">평일 오후</button>
+        <button type="button" class="chip on">평일 저녁</button>
+        <button type="button" class="chip">주말</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <label>남기실 말씀</label>
+      <textarea placeholder="궁금하신 점이나 운동 목표를 적어주세요."></textarea>
+    </div>
+    <button type="submit" class="form-submit">상담 신청 보내기 →</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">ECO.</div>
+  <div>© 2025 에코필라테스 에코시티1호점. All rights reserved.<br>대표 김소연 · 전북 전주시 덕진구 백석동로 11</div>
+  <div class="footer-links">
+    <a href="#">개인정보 처리방침</a>
+    <a href="#">이용약관</a>
+    <a href="https://www.instagram.com/sy._.pila_eco/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="sticky-cta">
+  <div class="sticky-inner">
+    <button class="cta-call" onclick="window.location.href='tel:01024033419'">📞 전화 문의</button>
+    <a href="#contact" class="cta-form">무료 상담 신청</a>
+  </div>
+</div>
+
+<script>
+// Topbar transparent on hero
+const topbarEl = document.querySelector('.topbar');
+const heroEl = document.getElementById('top');
+new IntersectionObserver(([e]) => {
+  topbarEl.classList.toggle('transparent', e.isIntersecting);
+}, { threshold: 0.01 }).observe(heroEl);
+
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const d = e.target.dataset.d || 0;
+    if (d) e.target.style.setProperty('--d', d + 'ms');
+    setTimeout(() => e.target.classList.add('in'), 0);
+    io.unobserve(e.target);
+  });
+}, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Schedule
+const schedData = {
+  weekday: [
+    { time: '09:00', label: '리포머', type: 'reformer' },
+    { time: '10:00', label: '기구', type: 'mat' },
+    { time: '11:00', label: '리포머', type: 'reformer' },
+    { time: '13:00', label: '1:1 PT', type: 'pt' },
+    { time: '15:00', label: '리포머', type: 'reformer' },
+    { time: '17:00', label: '기구', type: 'mat' },
+    { time: '18:00', label: '리포머', type: 'reformer' },
+    { time: '19:00', label: '1:1 PT', type: 'pt' },
+    { time: '20:00', label: '리포머', type: 'reformer' },
+    { time: '21:00', label: '기구', type: 'mat' },
+  ],
+  saturday: [
+    { time: '09:00', label: '리포머', type: 'reformer' },
+    { time: '10:00', label: '기구', type: 'mat' },
+    { time: '11:00', label: '1:1 PT', type: 'pt' },
+  ]
+};
+function renderSched(day) {
+  document.getElementById('schedGrid').innerHTML = schedData[day].map(r =>
+    `<div class="sched-row"><div class="sched-time">${r.time}</div><div class="sched-cell">${
+      r.label ? `<span class="sched-tag ${r.type}">${r.label}</span>` : '<span class="sched-empty">—</span>'
+    }</div></div>`
+  ).join('');
+}
+document.querySelectorAll('.stab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.stab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    renderSched(btn.dataset.day);
+  });
+});
+renderSched('weekday');
+
+// Chips
+document.querySelectorAll('.chips').forEach(group => {
+  group.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      group.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+      chip.classList.add('on');
+    });
+  });
+});
+
+// Form
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '신청 완료 ✓';
+  btn.style.opacity = '.6';
+  btn.disabled = true;
+});
+</script>
+</body>
+</html>
