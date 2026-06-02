@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>STILL. — 필라테스 (Mobile)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Pretendard (한국 모던 산세리프) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<!-- Hahmlet — 2025+ 트렌드 한국 모던 세리프 (액센트) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500;600;700;800&family=Gowun+Batang:wght@400;700&display=swap" />
+
+<link rel="stylesheet" href="mobile-styles.css" />
+</head>
+<body>
+
+<div id="root"></div>
+
+<template id="__bundler_thumbnail" data-bg-color="#ebeae6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#ebeae6"/>
+    <g transform="translate(600 400)" fill="#1a1a1a">
+      <text x="0" y="0" text-anchor="middle"
+            font-family="Georgia, 'Times New Roman', serif"
+            font-style="italic" font-weight="500"
+            font-size="180" letter-spacing="-6">STILL.</text>
+      <text x="0" y="64" text-anchor="middle"
+            font-family="-apple-system, system-ui, sans-serif"
+            font-weight="600" font-size="22" letter-spacing="14"
+            fill="#6b6b6b">PILATES STUDIO</text>
+      <line x1="-90" y1="-220" x2="90" y2="-220" stroke="#1a1a1a" stroke-width="2"/>
+    </g>
+  </svg>
+</template>
+
+<script>
+  window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "palette": ["#1a1a1a", "#ffffff", "#1a1a1a"],
+    "framed": true,
+    "showKoSerif": true,
+    "stickyCTA": true
+  }/*EDITMODE-END*/;
+</script>
+
+<script src="image-slot.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="mobile.jsx"></script>
+<script type="text/babel" src="mobile-app.jsx"></script>
+
+</body>
+</html>
